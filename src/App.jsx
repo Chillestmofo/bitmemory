@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback, useEffect, useRef } from 'react'
 import { Header } from './components/Header'
 import { AddProblem } from './components/AddProblem'
 import { ProblemDetail } from './components/ProblemDetail'
@@ -22,6 +22,8 @@ export default function App() {
   const [syncing, setSyncing] = useState(false)
   const { toasts, toast } = useToast()
 
+  const initializedRef = useRef(false)
+
   // Listen to auth
   useEffect(() => {
     if (!auth) return
@@ -29,16 +31,25 @@ export default function App() {
       setUser(u)
       if (u) {
         setSyncing(true)
+        initializedRef.current = false
         try {
           const cloudData = await loadDataFromCloud(u.uid)
           if (cloudData && cloudData.length > 0) {
-            setProblems(cloudData)
+            setProblems(prev => {
+              // Merge local problems that aren't in the cloud yet
+              const cloudIds = new Set(cloudData.map(c => c.id))
+              const localOnly = prev.filter(p => !cloudIds.has(p.id))
+              return [...cloudData, ...localOnly]
+            })
             toast('✓ Data synced from cloud', 'success')
           }
         } catch (err) {
           console.error("Cloud load error:", err)
         }
+        initializedRef.current = true
         setSyncing(false)
+      } else {
+        initializedRef.current = false
       }
     })
     return () => unsubscribe()
@@ -47,7 +58,7 @@ export default function App() {
   // Persist on change
   useEffect(() => {
     saveProblems(problems)
-    if (user && problems.length > 0) {
+    if (user && initializedRef.current) {
       syncDataToCloud(user.uid, problems).catch(console.error)
     }
   }, [problems, user])
