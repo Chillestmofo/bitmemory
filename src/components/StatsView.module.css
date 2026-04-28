@@ -1,0 +1,245 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.statCard {
+  background: var(--bg2);
+  border: 2px solid var(--text);
+  box-shadow: var(--pixel-shadow);
+  padding: 20px 16px;
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.statCard:hover {
+  box-shadow: var(--pixel-shadow-hover);
+  transform: translate(-1px, -1px);
+}
+
+.statDanger {
+  border-color: var(--hard);
+  box-shadow: 3px 3px 0 var(--hard);
+}
+
+.statWarn {
+  border-color: var(--med);
+  box-shadow: 3px 3px 0 var(--med);
+}
+
+.statValue {
+  font-family: var(--font-pixel);
+  font-size: 22px;
+  color: var(--accent);
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.statDanger .statValue { color: var(--hard); }
+.statWarn .statValue { color: var(--med); }
+
+.statLabel {
+  font-size: 11px;
+  color: var(--text3);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.panel {
+  background: var(--bg2);
+  border: 2px solid var(--text);
+  box-shadow: var(--pixel-shadow);
+  padding: 20px;
+}
+
+.panelTitle {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--accent);
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+/* Diff bars */
+.diffBars {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.diffBar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.diffBarLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.diffBarCount {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--text2);
+}
+
+.barTrack {
+  height: 12px;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.6s ease;
+  image-rendering: pixelated;
+}
+
+.barFillEasy { background: var(--easy); }
+.barFillMedium { background: var(--med); }
+.barFillHard { background: var(--hard); }
+
+/* Funnel */
+.funnelRows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.funnelRow {
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+  align-items: center;
+  gap: 10px;
+}
+
+.funnelLabel {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--text2);
+  letter-spacing: 0.5px;
+}
+
+.funnelCount {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--text3);
+  text-align: right;
+}
+
+/* Tag bars */
+.tagBars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tagBar {
+  display: grid;
+  grid-template-columns: 160px 1fr 30px;
+  align-items: center;
+  gap: 10px;
+}
+
+.tagBarName {
+  font-size: 12px;
+  color: var(--text2);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tagBarTrack {
+  height: 10px;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+}
+
+.tagBarFill {
+  height: 100%;
+  transition: width 0.6s ease;
+}
+
+.tagBarCount {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--text3);
+  text-align: right;
+}
+
+/* Activity */
+.activityList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.activityRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border);
+}
+
+.activityRow:last-child {
+  border-bottom: none;
+}
+
+.activityCheck {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--easy);
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.activityInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.activityName {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.activityDay {
+  font-size: 11px;
+  color: var(--text3);
+}
+
+.activityDate {
+  font-size: 11px;
+  color: var(--text3);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .row2 { grid-template-columns: 1fr; }
+  .tagBar { grid-template-columns: 120px 1fr 28px; }
+}

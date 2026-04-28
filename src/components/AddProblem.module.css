@@ -1,0 +1,208 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.error {
+  font-size: 11px;
+  color: var(--hard);
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  letter-spacing: 0.5px;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.diffRow {
+  display: flex;
+  gap: 6px;
+}
+
+.diffBtn {
+  flex: 1;
+  padding: 9px 6px;
+  border: 2px solid var(--border-strong);
+  background: var(--bg);
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  cursor: pointer;
+  transition: all var(--transition);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text2);
+}
+
+.diffEasy.diffActive {
+  background: var(--easy-bg);
+  color: var(--easy);
+  border-color: var(--easy);
+  box-shadow: 2px 2px 0 var(--easy);
+}
+.diffMedium.diffActive {
+  background: var(--med-bg);
+  color: var(--med);
+  border-color: var(--med);
+  box-shadow: 2px 2px 0 var(--med);
+}
+.diffHard.diffActive {
+  background: var(--hard-bg);
+  color: var(--hard);
+  border-color: var(--hard);
+  box-shadow: 2px 2px 0 var(--hard);
+}
+
+.tagGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.uploadZone {
+  border: 2px dashed var(--border-strong);
+  padding: 28px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  background: var(--bg3);
+  position: relative;
+}
+
+.uploadZone:hover,
+.dragging {
+  border-color: var(--accent);
+  background: var(--cyan-100);
+  box-shadow: inset 3px 3px 0 rgba(8,145,178,0.1);
+}
+
+.uploadIcon {
+  margin-bottom: 10px;
+}
+
+.uploadText {
+  font-size: 13px;
+  color: var(--text2);
+}
+
+.uploadText span {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.uploadSub {
+  font-size: 11px;
+  color: var(--text3);
+  margin-top: 4px;
+}
+
+.imgGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.imgWrap {
+  position: relative;
+  border: 2px solid var(--border-strong);
+  box-shadow: var(--pixel-shadow-sm);
+}
+
+.imgThumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  display: block;
+}
+
+.imgRemove {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 22px;
+  height: 22px;
+  background: var(--hard);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--text);
+}
+
+.scheduleInfo {
+  background: var(--bg3);
+  border: 2px solid var(--border);
+  padding: 16px;
+}
+
+.scheduleTitle {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--accent);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.scheduleDots {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 8px;
+}
+
+.scheduleDot {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.dotBox {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  background: var(--accent);
+  color: white;
+  padding: 5px 8px;
+  white-space: nowrap;
+}
+
+.dotLine {
+  flex: 1;
+  height: 2px;
+  background: var(--border-strong);
+}
+
+.scheduleDot:last-child .dotLine {
+  display: none;
+}
+
+.scheduleDesc {
+  font-size: 11px;
+  color: var(--text3);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 8px;
+  border-top: 2px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .row2 { grid-template-columns: 1fr; }
+  .scheduleDots { gap: 4px; }
+  .dotBox { font-size: 5px; padding: 4px 6px; }
+}

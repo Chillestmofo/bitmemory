@@ -1,0 +1,245 @@
+.card {
+  background: var(--bg2);
+  border: 2px solid var(--text);
+  box-shadow: var(--pixel-shadow);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.card:hover {
+  box-shadow: var(--pixel-shadow-hover);
+  transform: translate(-1px, -1px);
+}
+
+.card_overdue {
+  border-color: var(--hard);
+  box-shadow: 3px 3px 0 var(--hard);
+}
+.card_overdue:hover {
+  box-shadow: 4px 4px 0 var(--hard);
+}
+
+.card_due_today {
+  border-color: var(--med);
+  box-shadow: 3px 3px 0 var(--med);
+}
+.card_due_today:hover {
+  box-shadow: 4px 4px 0 var(--med);
+}
+
+.card_completed {
+  opacity: 0.6;
+}
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid;
+}
+
+.statusOverdue {
+  background: var(--hard-bg);
+  color: var(--hard);
+  border-color: var(--hard);
+}
+
+.statusToday {
+  background: var(--med-bg);
+  color: var(--med);
+  border-color: var(--med);
+}
+
+.statusUpcoming {
+  background: var(--cyan-50);
+  color: var(--cyan-700);
+  border-color: var(--cyan-300);
+}
+
+.statusDone {
+  background: #dcfce7;
+  color: var(--easy);
+  border-color: #86efac;
+}
+
+.statusRight {
+  margin-left: auto;
+  font-weight: normal;
+  opacity: 0.8;
+}
+
+.body {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.platform {
+  font-size: 10px;
+  color: var(--text3);
+  font-weight: 500;
+  border: 1.5px solid var(--border);
+  padding: 2px 8px;
+  background: var(--bg3);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tagChip {
+  font-size: 10px;
+  color: var(--cyan-700);
+  background: var(--cyan-50);
+  border: 1.5px solid var(--cyan-200);
+  padding: 2px 8px;
+  font-weight: 500;
+}
+
+.tagMore {
+  font-size: 10px;
+  color: var(--text3);
+  padding: 2px 6px;
+}
+
+/* Progress track */
+.progress {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.progNode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+
+.progDot {
+  width: 12px;
+  height: 12px;
+  border: 2px solid;
+  transition: all var(--transition);
+}
+
+.progLine {
+  flex: 1;
+  height: 2px;
+  background: var(--border-strong);
+  margin: 0 2px;
+  margin-bottom: 14px;
+}
+
+.progLineDone {
+  background: var(--accent);
+}
+
+.progLabel {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.progDone .progDot {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.progDone .progLabel { color: var(--accent); }
+
+.progNext .progDot {
+  background: var(--med-bg);
+  border-color: var(--med);
+  box-shadow: 0 0 0 3px rgba(217,119,6,0.2);
+  animation: pulse 1.4s infinite;
+}
+.progNext .progLabel { color: var(--med); }
+
+.progPending .progDot {
+  background: var(--bg3);
+  border-color: var(--border-strong);
+}
+.progPending .progLabel { color: var(--text3); }
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(217,119,6,0.2); }
+  50% { box-shadow: 0 0 0 6px rgba(217,119,6,0.1); }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1.5px dashed var(--border);
+  flex-wrap: wrap;
+}
+
+.footerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+.link:hover { color: var(--accent-hover); text-decoration: underline; }
+
+.imgCount {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text3);
+}
+
+.addedDate {
+  font-size: 11px;
+  color: var(--text3);
+}
+
+.footerRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
