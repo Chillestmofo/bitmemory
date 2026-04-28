@@ -41,7 +41,7 @@ export function Header({ stats, onAddClick, currentView, setView, user, onLogin,
 
         <div className={styles.right}>
           <div style={{display: 'flex', gap: '10px', marginRight: '8px', alignItems: 'center'}}>
-            <a href="https://twitter.com/your_handle" target="_blank" rel="noopener noreferrer" style={{color: 'var(--text2)', transition: 'color 0.2s'}} onMouseOver={e => e.currentTarget.style.color = 'var(--accent)'} onMouseOut={e => e.currentTarget.style.color = 'var(--text2)'}>
+            <a href="https://x.com/chillestmofoo" target="_blank" rel="noopener noreferrer" style={{color: 'var(--text2)', transition: 'color 0.2s'}} onMouseOver={e => e.currentTarget.style.color = 'var(--accent)'} onMouseOut={e => e.currentTarget.style.color = 'var(--text2)'}>
               <Twitter size={14} />
             </a>
             <a href="https://github.com/Chillestmofo" target="_blank" rel="noopener noreferrer" style={{color: 'var(--text2)', transition: 'color 0.2s'}} onMouseOver={e => e.currentTarget.style.color = 'var(--accent)'} onMouseOut={e => e.currentTarget.style.color = 'var(--text2)'}>
