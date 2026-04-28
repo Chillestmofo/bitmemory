@@ -2,6 +2,8 @@ import React from 'react'
 import { PixelBrain } from './PixelIcons'
 import styles from './Header.module.css'
 
+import { Github, Twitter } from 'lucide-react'
+
 export function Header({ stats, onAddClick, currentView, setView, user, onLogin, onLogout, syncing }) {
   return (
     <header className={styles.header}>
@@ -38,6 +40,14 @@ export function Header({ stats, onAddClick, currentView, setView, user, onLogin,
         </nav>
 
         <div className={styles.right}>
+          <div style={{display: 'flex', gap: '10px', marginRight: '8px', alignItems: 'center'}}>
+            <a href="https://twitter.com/your_handle" target="_blank" rel="noopener noreferrer" style={{color: 'var(--text2)', transition: 'color 0.2s'}} onMouseOver={e => e.currentTarget.style.color = 'var(--accent)'} onMouseOut={e => e.currentTarget.style.color = 'var(--text2)'}>
+              <Twitter size={14} />
+            </a>
+            <a href="https://github.com/Chillestmofo" target="_blank" rel="noopener noreferrer" style={{color: 'var(--text2)', transition: 'color 0.2s'}} onMouseOver={e => e.currentTarget.style.color = 'var(--accent)'} onMouseOut={e => e.currentTarget.style.color = 'var(--text2)'}>
+              <Github size={14} />
+            </a>
+          </div>
           {(stats.dueToday > 0 || stats.overdue > 0) && (
             <div className={styles.alertBadge}>
               {stats.overdue > 0 && <span className={styles.badgeRed}>{stats.overdue} overdue</span>}
