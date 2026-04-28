@@ -73,12 +73,28 @@ export function Header({ stats, onAddClick, currentView, setView, user, onLogin,
             </div>
           )}
           {user ? (
-            <div style={{display:'flex', alignItems:'center', gap:'8px'}}>
-              <span style={{fontSize:'10px', color:'var(--text2)'}}>
+            <div 
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '10px', 
+                background: 'var(--bg)', border: '2px solid var(--text)', 
+                boxShadow: '2px 2px 0px var(--text)', padding: '6px 12px'
+              }}
+            >
+              <span style={{fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text2)', fontWeight: '500'}}>
                 {syncing ? 'Syncing...' : user.displayName}
               </span>
-              <button className="btn-secondary" onClick={onLogout}>
-                Logout
+              <span style={{color: 'var(--text3)', fontSize: '12px'}}>|</span>
+              <button 
+                onClick={onLogout}
+                style={{
+                  background: 'none', border: 'none', padding: 0, cursor: 'pointer',
+                  fontFamily: 'var(--font-pixel)', fontSize: '7px', color: 'var(--text)',
+                  textTransform: 'uppercase', letterSpacing: '0.5px', transition: 'color 0.2s'
+                }}
+                onMouseOver={e => e.currentTarget.style.color = 'var(--accent)'}
+                onMouseOut={e => e.currentTarget.style.color = 'var(--text)'}
+              >
+                LOGOUT
               </button>
             </div>
           ) : (
