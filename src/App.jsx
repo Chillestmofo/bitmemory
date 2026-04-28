@@ -4,6 +4,7 @@ import { AddProblem } from './components/AddProblem'
 import { ProblemDetail } from './components/ProblemDetail'
 import { QueueView } from './components/QueueView'
 import { AllProblems } from './components/AllProblems'
+import { SavedProblems } from './components/SavedProblems'
 import { StatsView } from './components/StatsView'
 import { LandingHero } from './components/LandingHero'
 import { ToastContainer } from './components/Toast'
@@ -68,8 +69,13 @@ export default function App() {
   const handleAddProblem = useCallback((problem) => {
     setProblems(prev => [problem, ...prev])
     setShowAdd(false)
-    toast('✓ Problem logged! Revisions scheduled at day 3, 7, 15, 30.', 'success')
-    setView('queue')
+    if (problem.isSavedOnly) {
+      toast('✓ Problem saved for later.', 'success')
+      setView('saved')
+    } else {
+      toast('✓ Problem logged! Revisions scheduled at day 3, 7, 15, 30.', 'success')
+      setView('queue')
+    }
   }, [toast])
 
   const handleMarkDone = useCallback((problemId, revisionIndex) => {
@@ -131,6 +137,13 @@ export default function App() {
                   problems={problems}
                   onMarkDone={handleMarkDone}
                   onViewDetail={setDetailProblem}
+                />
+              )}
+              {view === 'saved' && (
+                <SavedProblems
+                  problems={problems}
+                  onViewDetail={setDetailProblem}
+                  onDelete={handleDelete}
                 />
               )}
               {view === 'stats' && (

@@ -43,6 +43,12 @@ export function Header({ stats, onAddClick, currentView, setView, user, onLogin,
             All Problems
           </button>
           <button
+            className={`${styles.navBtn} ${currentView === 'saved' ? styles.navActive : ''}`}
+            onClick={() => setView('saved')}
+          >
+            Saved
+          </button>
+          <button
             className={`${styles.navBtn} ${currentView === 'stats' ? styles.navActive : ''}`}
             onClick={() => setView('stats')}
           >

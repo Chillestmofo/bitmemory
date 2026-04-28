@@ -39,7 +39,7 @@ export function saveProblems(problems) {
   }
 }
 
-export function createProblem({ name, link, platform, difficulty, tags, notes, images }) {
+export function createProblem({ name, link, platform, difficulty, tags, notes, images, isSavedOnly }) {
   const today = startOfDay(new Date()).getTime()
   return {
     id: uuidv4(),
@@ -51,7 +51,8 @@ export function createProblem({ name, link, platform, difficulty, tags, notes, i
     notes,
     images: images || [],
     addedAt: today,
-    revisions: REVISION_INTERVALS.map(day => ({
+    isSavedOnly: isSavedOnly || false,
+    revisions: isSavedOnly ? [] : REVISION_INTERVALS.map(day => ({
       day,
       dueAt: addDays(today, day).getTime(),
       done: false,

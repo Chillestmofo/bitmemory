@@ -79,9 +79,9 @@ export function AddProblem({ onSave, onClose }) {
     return Object.keys(errs).length === 0
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (isSavedOnly = false) => {
     if (!validate()) return
-    const problem = createProblem(form)
+    const problem = createProblem({ ...form, isSavedOnly })
     onSave(problem)
   }
 
@@ -235,8 +235,11 @@ export function AddProblem({ onSave, onClose }) {
 
             {/* Actions */}
             <div className={styles.actions}>
-              <button className="btn-secondary" type="button" onClick={onClose}>Cancel</button>
-              <button className="btn-primary" type="button" onClick={handleSubmit}>
+              <button className="btn-secondary" type="button" onClick={onClose} style={{marginRight: 'auto'}}>Cancel</button>
+              <button className="btn-secondary" type="button" onClick={() => handleSubmit(true)} style={{borderStyle: 'dashed'}}>
+                Save for Later
+              </button>
+              <button className="btn-primary" type="button" onClick={() => handleSubmit(false)}>
                 Log + Schedule →
               </button>
             </div>
