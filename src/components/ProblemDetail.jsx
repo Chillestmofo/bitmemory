@@ -57,34 +57,36 @@ export function ProblemDetail({ problem, onClose, onMarkDone, onDelete }) {
           )}
 
           {/* Revision Schedule */}
-          <div className={styles.section}>
-            <div className={styles.sectionLabel}>// revision schedule</div>
-            <div className={styles.revTable}>
-              {REVISION_INTERVALS.map((d, i) => {
-                const rev = problem.revisions[i]
-                const isNext = next && next.day === d
-                return (
-                  <div key={d} className={`${styles.revRow} ${isNext ? styles.revRowNext : ''} ${rev.done ? styles.revRowDone : ''}`}>
-                    <div className={styles.revDay}>
-                      <span className={styles.revDayLabel}>Day {d}</span>
+          {!problem.isSavedOnly && (
+            <div className={styles.section}>
+              <div className={styles.sectionLabel}>// revision schedule</div>
+              <div className={styles.revTable}>
+                {REVISION_INTERVALS.map((d, i) => {
+                  const rev = problem.revisions[i]
+                  const isNext = next && next.day === d
+                  return (
+                    <div key={d} className={`${styles.revRow} ${isNext ? styles.revRowNext : ''} ${rev.done ? styles.revRowDone : ''}`}>
+                      <div className={styles.revDay}>
+                        <span className={styles.revDayLabel}>Day {d}</span>
+                      </div>
+                      <div className={styles.revDate}>{format(rev.dueAt, 'MMM d, yyyy')}</div>
+                      <div className={styles.revStatus}>
+                        {rev.done ? (
+                          <span className={styles.statusDone}>✓ Done — {rev.completedAt ? format(rev.completedAt, 'MMM d') : ''}</span>
+                        ) : isRevisionOverdue(rev) ? (
+                          <span className={styles.statusOverdue}>⚠ Overdue</span>
+                        ) : isRevisionToday(rev) ? (
+                          <span className={styles.statusToday}>● Due today</span>
+                        ) : (
+                          <span className={styles.statusPending}>○ Pending</span>
+                        )}
+                      </div>
                     </div>
-                    <div className={styles.revDate}>{format(rev.dueAt, 'MMM d, yyyy')}</div>
-                    <div className={styles.revStatus}>
-                      {rev.done ? (
-                        <span className={styles.statusDone}>✓ Done — {rev.completedAt ? format(rev.completedAt, 'MMM d') : ''}</span>
-                      ) : isRevisionOverdue(rev) ? (
-                        <span className={styles.statusOverdue}>⚠ Overdue</span>
-                      ) : isRevisionToday(rev) ? (
-                        <span className={styles.statusToday}>● Due today</span>
-                      ) : (
-                        <span className={styles.statusPending}>○ Pending</span>
-                      )}
-                    </div>
-                  </div>
-                )
-              })}
+                  )
+                })}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Notes */}
           {problem.notes && (
