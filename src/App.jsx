@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react'
+import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react'
 import { Header } from './components/Header'
 import { AddProblem } from './components/AddProblem'
 import { ProblemDetail } from './components/ProblemDetail'
@@ -64,7 +64,8 @@ export default function App() {
     }
   }, [problems, user])
 
-  const stats = getStats(problems)
+  const activeProblems = useMemo(() => problems.filter(p => !p.isSavedOnly), [problems])
+  const stats = getStats(activeProblems)
 
   const handleAddProblem = useCallback((problem) => {
     setProblems(prev => [problem, ...prev])
@@ -127,14 +128,14 @@ export default function App() {
             <>
               {view === 'queue' && (
                 <QueueView
-                  problems={problems}
+                  problems={activeProblems}
                   onMarkDone={handleMarkDone}
                   onViewDetail={setDetailProblem}
                 />
               )}
               {view === 'all' && (
                 <AllProblems
-                  problems={problems}
+                  problems={activeProblems}
                   onMarkDone={handleMarkDone}
                   onViewDetail={setDetailProblem}
                 />
@@ -147,7 +148,7 @@ export default function App() {
                 />
               )}
               {view === 'stats' && (
-                <StatsView problems={problems} />
+                <StatsView problems={activeProblems} />
               )}
             </>
           )}
