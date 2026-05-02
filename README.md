@@ -20,6 +20,8 @@ When grinding LeetCode, Codeforces, or general interview prep, the biggest hurdl
 - **Deployment**: Vercel
 - 
 
+## Live link: bitmemory.vercel.app
+
 ## Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/Chillestmofo/bitmemory/issues).
