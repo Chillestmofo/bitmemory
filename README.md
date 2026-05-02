@@ -20,7 +20,7 @@ When grinding LeetCode, Codeforces, or general interview prep, the biggest hurdl
 - **Deployment**: Vercel
 - 
 
-## Live link: bitmemory.vercel.app
+## Live link: https://bitmemory.vercel.app/
 
 ## Contributing
 
